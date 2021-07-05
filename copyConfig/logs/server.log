@@ -1,0 +1,56 @@
+2020-09-24 16:27:01 INFO  Reseived: /192.168.1.58:24631 session:1 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.54)LowPower(0)AlrCnt(00)f
+2020-09-24 16:27:01 INFO  HikariPool-1 - Starting...
+2020-09-24 16:27:02 INFO  HikariPool-1 - Start completed.
+2020-09-24 16:27:09 INFO  TcpAcceptor sessionIdle: 2 status is both idle. IP:PORT /192.168.1.58:11422
+2020-09-24 16:33:56 INFO  Reseived: /192.168.1.58:8443 session:3 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.56)LowPower(0)AlrCnt(00)h
+2020-09-24 16:34:03 INFO  TcpAcceptor sessionIdle: 4 status is both idle. IP:PORT /192.168.1.58:11323
+2020-09-24 16:34:40 INFO  Reseived: /192.168.1.58:40149 session:5 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.55)LowPower(0)AlrCnt(00)g
+2020-09-24 16:34:48 INFO  TcpAcceptor sessionIdle: 6 status is both idle. IP:PORT /192.168.1.58:49814
+2020-09-24 16:46:53 INFO  Reseived: /192.168.1.58:10304 session:7 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.55)LowPower(0)AlrCnt(00)g
+2020-09-24 16:47:00 INFO  TcpAcceptor sessionIdle: 8 status is both idle. IP:PORT /192.168.1.58:35536
+2020-09-24 17:46:52 INFO  Reseived: /192.168.1.58:48633 session:9 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.55)LowPower(0)AlrCnt(00)g
+2020-09-24 17:46:59 INFO  TcpAcceptor sessionIdle: 10 status is both idle. IP:PORT /192.168.1.58:9375
+2020-09-24 18:44:12 INFO  Reseived: /192.168.1.58:2993 session:11 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.53)LowPower(0)AlrCnt(00)e
+2020-09-24 18:44:19 INFO  TcpAcceptor sessionIdle: 12 status is both idle. IP:PORT /192.168.1.58:4574
+2020-09-24 18:44:35 INFO  Reseived: /192.168.1.58:25818 session:13 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.53)LowPower(0)AlrCnt(00)e
+2020-09-24 18:44:42 INFO  TcpAcceptor sessionIdle: 14 status is both idle. IP:PORT /192.168.1.58:5699
+2020-09-24 18:44:49 INFO  Reseived: /192.168.1.58:33374 session:15 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.54)LowPower(0)AlrCnt(00)f
+2020-09-24 18:44:57 INFO  TcpAcceptor sessionIdle: 16 status is both idle. IP:PORT /192.168.1.58:2901
+2020-09-24 18:46:50 INFO  Reseived: /192.168.1.58:13532 session:17 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.54)LowPower(0)AlrCnt(00)f
+2020-09-24 18:46:57 INFO  TcpAcceptor sessionIdle: 18 status is both idle. IP:PORT /192.168.1.58:31083
+2020-09-24 19:46:49 INFO  Reseived: /192.168.1.58:46962 session:19 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.42)LowPower(0)AlrCnt(00)c
+2020-09-24 19:46:57 INFO  TcpAcceptor sessionIdle: 20 status is both idle. IP:PORT /192.168.1.58:35467
+2020-09-24 20:46:48 INFO  Reseived: /192.168.1.58:14087 session:21 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.51)LowPower(0)AlrCnt(00)c
+2020-09-24 20:46:56 INFO  TcpAcceptor sessionIdle: 22 status is both idle. IP:PORT /192.168.1.58:26249
+2020-09-24 21:15:54 INFO  Reseived: /192.168.1.58:10942 session:23 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.50)LowPower(0)AlrCnt(00)b
+2020-09-24 21:16:02 INFO  TcpAcceptor sessionIdle: 24 status is both idle. IP:PORT /192.168.1.58:44645
+2020-09-24 21:46:47 INFO  Reseived: /192.168.1.58:8088 session:25 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.50)LowPower(0)AlrCnt(00)b
+2020-09-24 21:46:54 INFO  TcpAcceptor sessionIdle: 26 status is both idle. IP:PORT /192.168.1.58:35055
+2020-09-24 22:45:47 INFO  Reseived: /192.168.1.58:34829 session:27 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.39)LowPower(0)AlrCnt(00)i
+2020-09-24 22:45:54 INFO  TcpAcceptor sessionIdle: 28 status is both idle. IP:PORT /192.168.1.58:20610
+2020-09-24 22:46:46 INFO  Reseived: /192.168.1.58:49739 session:29 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.50)LowPower(0)AlrCnt(00)b
+2020-09-24 22:46:53 INFO  TcpAcceptor sessionIdle: 30 status is both idle. IP:PORT /192.168.1.58:35583
+2020-09-24 23:46:46 INFO  Reseived: /192.168.1.58:37586 session:31 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.49)LowPower(0)AlrCnt(00)j
+2020-09-24 23:46:53 INFO  TcpAcceptor sessionIdle: 32 status is both idle. IP:PORT /192.168.1.58:9793
+2020-09-25 00:46:44 INFO  Reseived: /192.168.1.58:39013 session:33 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.48)LowPower(0)AlrCnt(00)i
+2020-09-25 00:46:51 INFO  TcpAcceptor sessionIdle: 34 status is both idle. IP:PORT /192.168.1.58:26439
+2020-09-25 01:46:43 INFO  Reseived: /192.168.1.58:8155 session:35 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.47)LowPower(0)AlrCnt(00)h
+2020-09-25 01:46:50 INFO  TcpAcceptor sessionIdle: 36 status is both idle. IP:PORT /192.168.1.58:24125
+2020-09-25 02:46:41 INFO  Reseived: /192.168.1.58:24180 session:37 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.47)LowPower(0)AlrCnt(00)h
+2020-09-25 02:46:48 INFO  TcpAcceptor sessionIdle: 38 status is both idle. IP:PORT /192.168.1.58:16060
+2020-09-25 03:46:41 INFO  Reseived: /192.168.1.58:1578 session:39 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.45)LowPower(0)AlrCnt(00)f
+2020-09-25 03:46:48 INFO  TcpAcceptor sessionIdle: 40 status is both idle. IP:PORT /192.168.1.58:16087
+2020-09-25 04:46:39 INFO  Reseived: /192.168.1.58:35869 session:41 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.45)LowPower(0)AlrCnt(00)f
+2020-09-25 04:46:46 INFO  TcpAcceptor sessionIdle: 42 status is both idle. IP:PORT /192.168.1.58:24498
+2020-09-25 05:46:38 INFO  Reseived: /192.168.1.58:14436 session:43 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.45)LowPower(0)AlrCnt(00)f
+2020-09-25 05:46:45 INFO  TcpAcceptor sessionIdle: 44 status is both idle. IP:PORT /192.168.1.58:18705
+2020-09-25 06:46:36 INFO  Reseived: /192.168.1.58:13294 session:45 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.44)LowPower(0)AlrCnt(00)e
+2020-09-25 06:46:44 INFO  TcpAcceptor sessionIdle: 46 status is both idle. IP:PORT /192.168.1.58:43314
+2020-09-25 07:46:35 INFO  Reseived: /192.168.1.58:5946 session:47 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.44)LowPower(0)AlrCnt(00)e
+2020-09-25 07:46:42 INFO  TcpAcceptor sessionIdle: 48 status is both idle. IP:PORT /192.168.1.58:13997
+2020-09-25 08:46:34 INFO  Reseived: /192.168.1.58:14967 session:49 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.43)LowPower(0)AlrCnt(00)d
+2020-09-25 08:46:42 INFO  TcpAcceptor sessionIdle: 50 status is both idle. IP:PORT /192.168.1.58:43973
+2020-09-25 09:46:33 INFO  Reseived: /192.168.1.58:34238 session:51 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.42)LowPower(0)AlrCnt(00)c
+2020-09-25 09:46:40 INFO  TcpAcceptor sessionIdle: 52 status is both idle. IP:PORT /192.168.1.58:24521
+2020-09-25 10:46:32 INFO  Reseived: /192.168.1.58:40560 session:53 USPD(0)A000(0)(0)(0)(0)(0)(0)(0)(0)Inp(FF)Out(00)Power(4.43)LowPower(0)AlrCnt(00)d
+2020-09-25 10:46:39 INFO  TcpAcceptor sessionIdle: 54 status is both idle. IP:PORT /192.168.1.58:18031

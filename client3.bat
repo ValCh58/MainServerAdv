@@ -1,0 +1,23 @@
+java -jar "C:\JavaNetBeans\MinaClient\dist\MinaClient.jar"
+java -jar "C:\JavaNetBeans\MinaClient\dist\MinaClient.jar"
+java -jar "C:\JavaNetBeans\MinaClient\dist\MinaClient.jar"
+java -jar "C:\JavaNetBeans\MinaClient\dist\MinaClient.jar"
+java -jar "C:\JavaNetBeans\MinaClient\dist\MinaClient.jar"
+java -jar "C:\JavaNetBeans\MinaClient\dist\MinaClient.jar"
+java -jar "C:\JavaNetBeans\MinaClient\dist\MinaClient.jar"
+java -jar "C:\JavaNetBeans\MinaClient\dist\MinaClient.jar"
+java -jar "C:\JavaNetBeans\MinaClient\dist\MinaClient.jar"
+java -jar "C:\JavaNetBeans\MinaClient\dist\MinaClient.jar"
+java -jar "C:\JavaNetBeans\MinaClient\dist\MinaClient.jar"
+java -jar "C:\JavaNetBeans\MinaClient\dist\MinaClient.jar"
+java -jar "C:\JavaNetBeans\MinaClient\dist\MinaClient.jar"
+java -jar "C:\JavaNetBeans\MinaClient\dist\MinaClient.jar"
+java -jar "C:\JavaNetBeans\MinaClient\dist\MinaClient.jar"
+java -jar "C:\JavaNetBeans\MinaClient\dist\MinaClient.jar"
+java -jar "C:\JavaNetBeans\MinaClient\dist\MinaClient.jar"
+java -jar "C:\JavaNetBeans\MinaClient\dist\MinaClient.jar"
+java -jar "C:\JavaNetBeans\MinaClient\dist\MinaClient.jar"
+java -jar "C:\JavaNetBeans\MinaClient\dist\MinaClient.jar"
+
+
+
