@@ -13,7 +13,7 @@ public class HikariConectionFactory {
     private static final Properties prop = ConfigServer.getInstance();
     private static HikariDataSource hikariDataSource = null;
     private static final HikariConfig config = new HikariConfig();
-    private static final int coreSize = Runtime.getRuntime().availableProcessors() + 1;
+    private static final int CORE_SIZE = Runtime.getRuntime().availableProcessors() + 1;
     private static final int SSL_ON = 1; 
     private static String sslSelect = null;
         
@@ -38,7 +38,7 @@ public class HikariConectionFactory {
         
         config.setUsername(prop.getProperty("dbUser"));
         config.setPassword(prop.getProperty("dbPwd")); //123456
-        config.setMaximumPoolSize((coreSize * 2) + 1);
+        config.setMaximumPoolSize((CORE_SIZE * 2) + 1);
         config.setAutoCommit(false);
         config.addDataSourceProperty("cachePrepStmts", prop.getProperty("cachePrepStmts"));
         config.addDataSourceProperty("prepStmtCacheSize", prop.getProperty("prepStmtCacheSize"));

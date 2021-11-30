@@ -25,22 +25,22 @@ import util.ExecutorUtils;
 abstract public class TcpAcceptor {
 
     public final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TcpAcceptor.class);
-    protected NioSocketAcceptor acceptor;
-    protected RecvPacketRuleCfg rule;
-    protected TcpAcceptorHandler handler;
+    protected NioSocketAcceptor acceptor = null;
+    protected RecvPacketRuleCfg rule = null;
+    protected TcpAcceptorHandler handler = null;
     protected int coreSize = Runtime.getRuntime().availableProcessors() + 1;
     /**
      * Доступ к рабочему пулу 
      */
-    protected ExecutorService acceptorExecutor;
+    protected ExecutorService acceptorExecutor = null;
     /**
      * IO Пул потоков обработки ввода-вывода
      */
-    protected ExecutorService ioExecutor;
+    protected ExecutorService ioExecutor = null;
     /**
      * Пул потоков бизнес-обработки
      */
-    protected ExecutorService businessExecutor;
+    protected ExecutorService businessExecutor = null;
 
     public TcpAcceptor(RecvPacketRuleCfg rule, TcpAcceptorHandler handler) {
         this.handler = handler;
@@ -62,7 +62,7 @@ abstract public class TcpAcceptor {
          * IoProcessor - внутренний интерфейс для представления «процессора
          * ввода-вывода», который выполняет фактические операции ввода-вывода
          * для IoSessions. Он еще раз абстрагирует существующие реакторные
-         * структуры, такие как Java NIO, для упрощения реализации транспорта.
+         * структуры, такие как Java NIO, для упрощения реализации транспорта
          * IoProcessor pool , который распределяет IoSessions в одну или
          * несколько IoProcessorS
          */
@@ -80,7 +80,7 @@ abstract public class TcpAcceptor {
         buildFilterChain();
         acceptor.setHandler(handler);//установка обработчика событий на acceptor//
         try {
-            List<SocketAddress> address = new ArrayList<SocketAddress>();
+            List<SocketAddress> address = new ArrayList<>();
             //Несколько SocketAddress могут быть добавлены
             //RecvPacketRuleCfg rule Установка типа принимаемого пакета 
             address.add(new InetSocketAddress((String) rule.get("ip"), (Integer) rule.get("port")));

@@ -53,14 +53,15 @@ public class ExecutorUtils {
         final String gp = group;
         BlockingQueue<Runnable> bq = null;
         if (capacity == 0) {
-            bq = new SynchronousQueue<Runnable>();
+            bq = new SynchronousQueue<>();
         } else {
-            bq = new LinkedBlockingQueue<Runnable>(capacity);
+            bq = new LinkedBlockingQueue<>(capacity);
         }
         return new ThreadPoolExecutor(corePoolSize, maxPoolSize, aliveTime, TimeUnit.SECONDS, bq, new NamedThreadFactory(group)) {
             AtomicInteger ai = new AtomicInteger(1);
             SimpleDateFormat f = new SimpleDateFormat("yyyyMMdd_HHmmss");
 
+            @Override
             protected void beforeExecute(Thread t, Runnable r) {
                 // Привязать имя группы к текущему контексту потока log4j
                 MDC.put(GROUP_KEY, gp);
@@ -71,7 +72,9 @@ public class ExecutorUtils {
                 }
             }
 
+            @Override
             protected void afterExecute(Runnable r, Throwable t) {
+                @SuppressWarnings("UseOfObsoleteCollectionType")
                 Hashtable<?, ?> ht = MDC.getContext();
                 if (ht != null) {
                     ht.clear();
@@ -85,6 +88,7 @@ public class ExecutorUtils {
      *
      * @param corePoolSize количество основных потоков
      * @param group thread Имя группы MDC префикс @param
+     * @param prefix
      * @return
      */
     public static ScheduledExecutorService newScheduledThreadPool(
@@ -97,6 +101,7 @@ public class ExecutorUtils {
             AtomicInteger ai = new AtomicInteger(1);
             SimpleDateFormat f = new SimpleDateFormat("yyyyMMdd_HHmmss");
 
+            @Override
             protected void beforeExecute(Thread t, Runnable r) {
                 // Привязать имя группы к текущему контексту потока log4j
                 MDC.put(GROUP_KEY, gp);
@@ -107,7 +112,9 @@ public class ExecutorUtils {
                 }
             }
 
+            @Override
             protected void afterExecute(Runnable r, Throwable t) {
+                @SuppressWarnings("UseOfObsoleteCollectionType")
                 Hashtable<?, ?> ht = MDC.getContext();
                 if (ht != null) {
                     ht.clear();
@@ -132,6 +139,7 @@ public class ExecutorUtils {
                     "-thread-";
         }
 
+        @Override
         public Thread newThread(Runnable r) {
             Thread t = new Thread(group, r,
                     namePrefix + threadNumber.getAndIncrement(),

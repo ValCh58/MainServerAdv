@@ -11,15 +11,19 @@ public class ByteUtils {
 			'7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
 	
 	
-	//Базовый тип для ByteArray
-	/**
-	 * @see #long2Bytes(long f)
-	 */
+  //Базовый тип для ByteArray
+    /**
+     * @param f
+     * @return 
+     * @see #long2Bytes(long f)
+     */
 	public static byte[] short2Bytes(short f) {
 		return long2Bytes(f, longRealLen(f));
 	}
 	
 	/**
+         * @param f
+         * @return 
 	 * @see #long2Bytes(long f)
 	 */
 	public static byte[] int2Bytes(int f) {
@@ -42,6 +46,8 @@ public class ByteUtils {
 	 * Преобразование числового типа в байтовый массив
          * @param f number
          * Длина байтового массива, возвращаемого длиной @param
+         * @param length
+         * @return 
          * @ возврат байтового массива
 	 */
 	public static byte[] long2Bytes(long f, int length) {
@@ -75,6 +81,8 @@ public class ByteUtils {
 	}
 
 	/**
+         * @param bs
+         * @return 
 	 * @see #bytes2Long(byte[] bs)
 	 */
 	public static int bytes2Int(byte[] bs) {
@@ -277,18 +285,19 @@ public class ByteUtils {
 	}
 	
 	/**
-	 * Операция заполнения массива байтов. <br>
+	 * Операция заполнения массива байтов.<br>
          * @param rs исходный байтовый массив
          * @param ch дополненные байты
          * @param num длина целевого байтового массива
          * @param left padding left или right
+         * @return 
          * @ возврат байтового массива после завершения
 	 */
 	public static byte[] fillByte(byte[] rs, byte ch, int num, boolean left) {
 		int rsLen = rs.length;
 		byte[] ret = new byte[Math.abs(num)];
 		Arrays.fill(ret, ch);
-		// е·¦иЎҐе…Ё
+		
 		if (left) {
 			if (num >= rsLen)
 				System.arraycopy(rs, 0, ret, num - rsLen, rsLen);
@@ -354,10 +363,10 @@ public class ByteUtils {
 	}
 	
 	/**
-	 * Используется для проверки того, находится ли смещение массива и последующая длина вне границ, то есть превышает ли размер off / len / off + len размер.
-         * Пример: checkBounds (10, 20, bs.length) Проверьте, не превышена ли длина массива bs, если смещение равно 10, а len равно 20.
+	 * Используется для проверки того, находится ли смещение массива и последующая длина вне границ, то есть превышает ли размер off / len / off + len размер.Пример: checkBounds (10, 20, bs.length) Проверьте, не превышена ли длина массива bs, если смещение равно 10, а len равно 20.
          * @param off offset
          * длина @param len после смещения
+         * @param len
          * @param size размер массива
 	 */
 	public static void checkBounds(int off, int len, int size) throws IndexOutOfBoundsException {
@@ -418,6 +427,7 @@ public class ByteUtils {
 	 * @param dst
 	 * @return
 	 */
+        @SuppressWarnings("empty-statement")
 	public static int indexOf(byte[] source,int fromIndex, byte[] dst)
 	{
 		if (fromIndex >= source.length) {

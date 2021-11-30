@@ -20,7 +20,7 @@ public class ConfigServer {
     private final String keyFile = "./config/config.key";
     private final String propFile = "./config/config.cfg";
     SafeReadWriteProp SRW = new SafeReadWriteProp(keyFile, propFile);
-    private static ConfigServer cnfServer = null;
+    private static volatile ConfigServer cnfServer = null;
 
     private ConfigServer() {
         init();
@@ -86,8 +86,9 @@ public class ConfigServer {
     private void createEncriptFile() {
         Properties locProp = getLocalProp(propFile);
         SRW.setPropToFile(locProp);
-        if(locProp != null)
-           readPropConfig(); 
+        if (locProp != null) {
+            readPropConfig();
+        }
     }
 
     /**
@@ -97,6 +98,7 @@ public class ConfigServer {
     private void readPropConfig() {
         InputStreamReader isr = SRW.getPropFromFile();
         if (isr == null) {
+            logger.error("Ошибка инициализации файла конфигурации " + propFile);
             return;
         }
         prop = new Properties();
@@ -104,10 +106,10 @@ public class ConfigServer {
             prop.load(isr);
         } catch (IOException ex) {
             logger.error(ex);
-        }finally{
-            if(isr != null)
+        } finally {
+            if (isr != null)
                 try {
-                    isr.close();
+                isr.close();
             } catch (IOException ex) {
                 logger.error(ex);
             }
@@ -116,7 +118,7 @@ public class ConfigServer {
 
     /**
      * Инициализация свойств сервера
-     * 
+     *
      */
     private void init() {
 
@@ -151,9 +153,14 @@ public class ConfigServer {
          */
     }
 
+    @SuppressWarnings("DoubleCheckedLocking")
     public static Properties getInstance() {
         if (prop == null) {
-            cnfServer = new ConfigServer();
+            synchronized (ConfigServer.class) {
+                if (prop == null) {
+                    cnfServer = new ConfigServer();
+                }
+            }
         }
         return prop;
     }

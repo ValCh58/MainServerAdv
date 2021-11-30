@@ -15,6 +15,7 @@ public class ShortConnectorHandler extends TcpConnectorHandler {
 	public ShortConnectorHandler() {
 	}
 
+        @Override
 	public void sessionIdle(IoSession session, IdleStatus status) {
 		super.sessionIdle(session, status);
     	ReadFuture future = getReadFuture(session);
@@ -23,10 +24,12 @@ public class ShortConnectorHandler extends TcpConnectorHandler {
         session.closeNow();
     }
 	
+        @Override
 	 public void messageSent(IoSession session, Object message) throws Exception {
     	super.messageSent(session, message);
     }
 	
+        @Override
 	public void messageReceived(IoSession session, Object message) {
     	super.messageReceived(session, message);
     	session.closeNow();

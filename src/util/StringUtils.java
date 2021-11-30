@@ -34,6 +34,7 @@ public class StringUtils {
      * Определяет, является ли строка пустой или имеет длину 0.
      *
      * @param str
+     * @return 
      */
     public static boolean isBlank(String str) {
         return str == null || str.trim().length() == 0;
@@ -41,6 +42,8 @@ public class StringUtils {
 
     /**
      * Определяет, является ли строка пустой.
+     * @param str
+     * @return 
      */
     public static boolean isEmpty(String str) {
         return str == null || "".equals(str.trim());
@@ -52,6 +55,7 @@ public class StringUtils {
      *
      * @param array string array
      * @param seperator
+     * @return 
      */
     public static String conc(String[] array, String seperator) {
         String rst = "";
@@ -66,6 +70,8 @@ public class StringUtils {
 
     /**
      * Значение, если значение пустое, возвращается значение по умолчанию
+     * @param value
+     * @return 
      */
     public static String getValue(String value, String defValue) {
         if (value == null || "".equals(value)) {
@@ -82,6 +88,7 @@ public class StringUtils {
      * видимыми символами
      * @param num длина строки байтового массива
      * @param left padding left или right
+     * @return 
      * @ return строка завершения
      */
     public static String fillChar(String rs, char ch, int num, boolean left) {
@@ -149,6 +156,8 @@ public class StringUtils {
 
     /**
      * Уберите левое пространство из строки
+     * @param s
+     * @return 
      */
     public static String ltrim(String s) {
         int len = s.length();
@@ -163,6 +172,8 @@ public class StringUtils {
 
     /**
      * Уберите правое пространство из строки
+     * @param s
+     * @return 
      */
     public static String rtrim(String s) {
         int len = s.length();
@@ -178,7 +189,9 @@ public class StringUtils {
     /**
      * Определить, соответствует ли строка заданному регулярному выражению.
      *
-     * @param регулярное выражение строка регулярного выражения
+     * @param regex
+     * @param str
+     * @return 
      */
     public static boolean patternMatches(String regex, String str) {
         if (str == null) {
@@ -192,6 +205,8 @@ public class StringUtils {
     /**
      * Определяет, является ли строка строкой, начинающейся с буквы, цифры или
      * символа подчеркивания.
+     * @param name
+     * @return 
      */
     public static boolean isValidVariableName(String name) {
         return StringUtils.isEmpty(name) ? false : patternMatches("^[a-zA-Z_]+\\w*$", name);
@@ -199,7 +214,9 @@ public class StringUtils {
 
     /**
      * Определяет, начинается ли строка с буквы или подчеркивания и может ли она
-     * содержать. И []
+     * содержать.И []
+     * @param name
+     * @return 
      */
     public static boolean isValidLeftOperator(String name) {
         return StringUtils.isEmpty(name) ? false : patternMatches("^[a-zA-Z_]+(\\.?\\w+(\\[\\d+\\])*)*$", name);
@@ -207,6 +224,9 @@ public class StringUtils {
 
     /**
      * Определить, содержит ли строка заданное строковое регулярное выражение
+     * @param str
+     * @param regexp
+     * @return 
      */
     public static boolean startsWith(String str, String regexp) {
         return Pattern.compile(regexp).matcher(str).find();

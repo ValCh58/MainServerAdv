@@ -1,5 +1,6 @@
 package mainserver;
 
+import java.util.Optional;
 import org.apache.log4j.Logger;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;
@@ -25,8 +26,7 @@ public class TcpAcceptorHandler extends IoHandlerAdapter {
      * соединения
      *
      * @param session
-     * @throws Exception
-     * @return 
+     * @throws Exception 
      */
     @Override
     public void sessionCreated(IoSession session) throws Exception {
@@ -58,9 +58,11 @@ public class TcpAcceptorHandler extends IoHandlerAdapter {
      * @throws Exception
      */
     @Override
-    public void exceptionCaught(IoSession session, Throwable t)
-            throws Exception {
-        logger.error("TcpAcceptor exceptionCaught: " + session.getId(), t);
+    public void exceptionCaught(IoSession session, Throwable t) throws Exception {
+        
+        @SuppressWarnings("ReplaceStringBufferByString")
+        StringBuffer sb = new StringBuffer("TcpAcceptor exceptionCaught: ").append(session.getId());
+        logger.error(sb.toString(), t);
     }
 
     /**
@@ -81,8 +83,14 @@ public class TcpAcceptorHandler extends IoHandlerAdapter {
      */
     @Override
     public void sessionIdle(IoSession session, IdleStatus status) {
+        @SuppressWarnings("ReplaceStringBufferByString")
+        StringBuffer sb = new StringBuffer("TcpAcceptor sessionIdle: ").append(session.getId())
+                                                                       .append(" status is ")
+                                                                       .append(status)
+                                                                       .append(". IP:PORT ")
+                                                                       .append(session.getRemoteAddress());
         //logger.debug("TcpAcceptor sessionIdle:" + session.getId() + " status is " + status + ". ");
-        logger.info("TcpAcceptor sessionIdle: " + session.getId() + " status is " + status + ". IP:PORT " + session.getRemoteAddress().toString());
+        logger.info(sb.toString());
         //logger.info( "IDLE " + session.getIdleCount( status ));
     }
 
@@ -96,7 +104,7 @@ public class TcpAcceptorHandler extends IoHandlerAdapter {
      */
     @Override
     public void messageSent(IoSession session, Object message) throws Exception {
-        // Журнал изменен на messageReceived, здесь только указывает, что информация была отправлена, 
+        // Журнал изменен на messageReceived, здесь только указывается, что информация была отправлена, 
         //чтобы избежать противоречивой информации журнала из-за многопоточности
         //logger.info("TcpAcceptor SENT: " + session.getId() + new String((byte[]) message));
         //logger.info(session.getService().toString());
@@ -111,14 +119,31 @@ public class TcpAcceptorHandler extends IoHandlerAdapter {
      */
     @Override
     public void messageReceived(IoSession session, Object message) throws Exception {
-        logger.info("Reseived: " + session.getRemoteAddress().toString() + " session:" + session.getId() +" "+ new String((byte[]) message));
+     
+        Optional<IoSession> opSession = Optional.ofNullable(session);
+        if (opSession.isEmpty()) {
+            session.closeNow();
+            return;
+        }
         
+        Optional<Object> opMessage = Optional.ofNullable(message);
+        if (opMessage.isEmpty()) {//Для клиента нет данных
+            session.closeNow();
+            return;
+        }
+        
+        @SuppressWarnings("ReplaceStringBufferByString")
+        StringBuffer stb = new StringBuffer().append("Session ID:").append(session.getId())
+                                             .append(" message:").append(new String((byte[]) message));
+        logger.info(stb.toString());
+        
+        @SuppressWarnings("UnusedAssignment")
         byte[] ret = null;
         try {
             //Выполнить бизнес-логику для возврата данных к клиенту 
             ret = doHandler((byte[]) message, session);
         } catch (Exception e) {
-            logger.error("TcpAcceptor InvokeFlow Error: " + session.getId(), e);
+            logger.error(new StringBuffer("TcpAcceptor InvokeFlow Error: ").append(session.getId()).toString(), e);
             session.closeNow();
             return;
         }
@@ -126,13 +151,14 @@ public class TcpAcceptorHandler extends IoHandlerAdapter {
             session.closeNow();
             return;
         }
-        if (ret != null && ret.length > 0) {
+        if (ret.length > 0) {
             // При обработке ответа, если соединение закрыто // 
             if (session.isClosing() || !session.isConnected()) {
-                logger.error("Connection dropped, sending data is ignored: " + session.getId() + new String(ret));
+                logger.error(new StringBuffer("Connection dropped, sending data is ignored: ")
+                             .append(session.getId()).append(ret).toString());
                 return;
             }
-            logger.info("TcpAcceptor SEND:" + session.getId() +" " + new String(ret));
+            logger.info(new StringBuffer("TcpAcceptor SEND:").append(session.getId()).append(" ").append(ret).toString());
             
             session.write(ret);//Отправим данные клиенту
         }
@@ -156,6 +182,7 @@ public class TcpAcceptorHandler extends IoHandlerAdapter {
         }
         
         data = data.substring(1, data.length() - 2);//Уберем служебные символы//
+        @SuppressWarnings("UnusedAssignment")
         String answer = "";
         if(data.contains("pinggnip")){//Запрос проверки работы сервера связи 
             answer = "gnipping";      //Ответ сервера связи
@@ -193,7 +220,7 @@ public class TcpAcceptorHandler extends IoHandlerAdapter {
         
         CounterDataProcessing cdp = new CounterDataProcessing(data);
         
-        if(cdp.processingHeaterMeter()){//Обработка переданых показаний теплосчетчиков счетчиков//
+        if(cdp.processingHeaterMeter()){//Обработка переданых показаний теплосчетчиков//
             result = true; 
         }
         
@@ -207,8 +234,7 @@ public class TcpAcceptorHandler extends IoHandlerAdapter {
         if(result){
            ThreadeInsertSQL tis = new ThreadeInsertSQL(HikariConectionFactory.getConnection(), cdp);
             tis.run();//Запись в БД данных.
-            ProcessAlarms pa = new ProcessAlarms(/*cdp.getDfwfm().getOutputStatus()*/cdp);
-            //writeSession = pa.sendAnswer();//Обработка аварии.
+            ProcessAlarms pa = new ProcessAlarms(cdp);
             writeSession = pa.retAlarm();//Обработка аварии.
             if(writeSession != null && !writeSession.isEmpty()){
                return writeSession; //Если есть авария сначала обработаем ее//

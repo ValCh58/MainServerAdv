@@ -31,6 +31,7 @@ public class ShortTcpConnector extends TcpConnector {
 		}
 	}
 
+        @Override
 	protected String getConnectorName() {
 		return "Tcp Короткое соединение";
 	}

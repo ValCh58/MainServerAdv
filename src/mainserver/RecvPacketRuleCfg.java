@@ -21,7 +21,7 @@ public class RecvPacketRuleCfg {
 
     public Map<String, Object> getAttributes() {
         if (attributes == null) {
-            attributes = new HashMap<String, Object>();
+            attributes = new HashMap<>();
         }
         return attributes;
     }

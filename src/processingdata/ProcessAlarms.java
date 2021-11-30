@@ -77,18 +77,18 @@ public class ProcessAlarms {
     }
     
     public String retAlarm(){
-        String retVal = "";
+        String retval = "";
         
-        retVal = sendAnswer();
-        if(!retVal.isEmpty()){
-            return retVal;
+        retval = sendAnswer();
+        if(!retval.isEmpty()){
+            return retval;
         }
         
-        retVal = sendAnswerLowPower();
-        if(!retVal.isEmpty()){
-            return retVal;
+        retval = sendAnswerLowPower();
+        if(!retval.isEmpty()){
+            return retval;
         }
-        return retVal;
+        return retval;
     }
 
 }

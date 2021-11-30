@@ -50,7 +50,7 @@ abstract public class TcpConnector  {
 	}
 	
 	protected void buildExecutors() {
-		// Создайте трех исполнителей потока здесь вместо использования по умолчанию, 
+		// Создаеm трех исполнителей потока здесь вместо использования по умолчанию, 
                 //что удобно для регистрации информации доступа к инъекции MDC
 		connectorExecutor = new MyThreadPoolExecutor(1);
 		ioExecutor = new MyThreadPoolExecutor(coreSize);
@@ -64,7 +64,7 @@ abstract public class TcpConnector  {
 		sendRequest(session, message);
 		// Читать ответный пакет
 //		ReadFuture readFuture = session.read();
-		int timeout = args.length > 0 ? (Integer)args[0] : (Integer)rule.get("timeout")!=null?(Integer)rule.get("timeout"):10000;
+		int timeout = args.length > 0 ? (int)args[0] : (Integer)rule.get("timeout")!=null?(int)rule.get("timeout"):10000;
 		return recvResponse(readFuture, timeout);
 	}
 	
@@ -72,6 +72,7 @@ abstract public class TcpConnector  {
 		if (logger.isInfoEnabled())
 			logger.info("TcpConnector SEND:\r\n" + new String(message));
 		WriteFuture future = session.write(message);
+                //Доработать!!!
 //		future.awaitUninterruptibly(/*10*1000L*/);
 //		if (!future.isWritten())
 //			throw new CommunicateException("Не удалось записать данные на удаленный TCP-сервер");
@@ -116,7 +117,7 @@ abstract public class TcpConnector  {
 	
 	public void start() throws Exception {
 		buildExecutors();
-		IoProcessor<NioSession> processor = new SimpleIoProcessorPool<NioSession>(
+		IoProcessor<NioSession> processor = new SimpleIoProcessorPool<>(
 				NioProcessor.class, /*ioExecutor,*/ coreSize);
 		connector = new NioSocketConnector(connectorExecutor, processor);
 		connector.setConnectTimeoutMillis((Integer) rule.get("timeout")); // Установите время ожидания соединения. 
@@ -143,10 +144,12 @@ abstract public class TcpConnector  {
 		public MyThreadPoolExecutor(int corePoolSize) {
 			super(corePoolSize, Integer.MAX_VALUE, 60, TimeUnit.SECONDS, new SynchronousQueue<Runnable>());
 		}
+                @Override
 		protected void beforeExecute(Thread t, Runnable r) {
 			String GROUP_KEY = "GROUP_KEY";
 			Object group = MDC.get(GROUP_KEY);
 			// Привязать имя группы к текущему контексту потока log4j
+                        @SuppressWarnings("UseOfObsoleteCollectionType")
 			Hashtable<?, ?> ht = MDC.getContext();
 			if (ht != null)
 				ht.clear();
